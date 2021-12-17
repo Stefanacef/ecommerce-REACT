@@ -1,9 +1,8 @@
 import "./header.styles.scss";
 import logoImg from "../../assets/logo.png";
-
 import { auth } from "../../firebase/firebase.utils";
-
 import { Link } from "react-router-dom";
+
 const Header = ({ currentUser }) => {
   return (
     <nav className="header">
