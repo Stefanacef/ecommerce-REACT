@@ -2,7 +2,7 @@ import "./header.styles.scss";
 import logoImg from "../../assets/logo.png";
 import { auth } from "../../firebase/firebase.utils";
 import { Link } from "react-router-dom";
-
+import { connect } from "react-redux";
 const Header = ({ currentUser }) => {
   return (
     <nav className="header">
@@ -29,4 +29,7 @@ const Header = ({ currentUser }) => {
     </nav>
   );
 };
-export default Header;
+const mapStateToProps = (state) => ({
+  currentUser: state.user.currentUser,
+});
+export default connect(mapStateToProps)(Header);
