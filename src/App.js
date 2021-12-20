@@ -6,6 +6,8 @@ import ShopPage from "./pages/shop/shop.component";
 import Header from "./components/header/header.component";
 import SignInAndSignUpPage from "./pages/sing-in-and-sign-up/sing-in-and-sign-up.component";
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
+import { Provider } from "react-redux";
+import store from "./components/redux/store";
 class App extends React.Component {
   constructor() {
     super();
@@ -39,7 +41,7 @@ class App extends React.Component {
   }
   render() {
     return (
-      <div>
+      <Provider store={store}>
         <Router>
           <Header currentUser={this.state.currentUser} />
           <Routes>
@@ -48,7 +50,7 @@ class App extends React.Component {
             <Route exact path="/signin" element={<SignInAndSignUpPage />} />
           </Routes>
         </Router>
-      </div>
+      </Provider>
     );
   }
 }
