@@ -1,13 +1,12 @@
 import "./checkout-item.styles.scss";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   clearItemFromCart as clearItem,
   removeItem,
   addItem,
 } from "../../redux/cart/cart.action";
 
-const CheckoutItem = () => {
-  const [cartItem] = useSelector((state) => state.cart.cartItems);
+const CheckoutItem = ({ cartItem }) => {
   const { name, imageUrl, price, quantity } = cartItem;
   const dispatch = useDispatch();
   return (
