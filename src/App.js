@@ -16,6 +16,9 @@ import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 import { connect, useDispatch, useSelector } from "react-redux";
 import { setCurrentUser } from "./redux/user/user.action";
 import { selectCurrentUser } from "./redux/user/user.selector";
+import CollectionOverview from "./components/collections-overview/collections-overview.component";
+import CategoryPage from "./pages/category/category.component";
+
 class App extends React.Component {
   unsubscribeFormAuth = null;
   componentDidMount() {
@@ -43,10 +46,9 @@ class App extends React.Component {
         <Router>
           <Header />
           <Routes>
-            <Route exact path="/" element={<HomePage />} />
-            <Route exact path="/shop" element={<ShopPage />} />
+            <Route path="/" element={<HomePage />} />
+            <Route path="/shop/*" element={<ShopPage />} />
             <Route
-              exact
               path="/signin"
               element={
                 this.props.currentUser ? (
@@ -56,7 +58,7 @@ class App extends React.Component {
                 )
               }
             ></Route>
-            <Route exact path="/checkout" element={<CheckoutPage />} />
+            <Route path="/checkout" element={<CheckoutPage />} />
           </Routes>
         </Router>
       </div>
