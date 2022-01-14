@@ -17,7 +17,6 @@ import { connect, useDispatch, useSelector } from "react-redux";
 import { setCurrentUser } from "./redux/user/user.action";
 import { selectCurrentUser } from "./redux/user/user.selector";
 import CollectionOverview from "./components/collections-overview/collections-overview.component";
-import CategoryPage from "./pages/category/category.component";
 
 class App extends React.Component {
   unsubscribeFormAuth = null;
