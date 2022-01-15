@@ -5,7 +5,7 @@ import {
   selectCartTotal,
 } from "../../redux/cart/cart.selectors";
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
-import StripeCheckOutButton from "../../components/stripe-button/stripe-button.component";
+import StripeCheckOutButton from "../../components/stripe-button/stripe-button.component.jsx";
 
 const CheckoutPage = () => {
   const cartItems = useSelector(selectCartItems);
