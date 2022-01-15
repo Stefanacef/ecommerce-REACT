@@ -24,11 +24,14 @@
 
   .quantity {
     display: flex;
+    align-items: center;
+    justify-content: center;
     .arrow {
       cursor: pointer;
       background-color: transparent;
       border: transparent;
       font-size: 17px;
+      transform: translateY(-25px);
     }
     .value {
       margin: 0 10px;
