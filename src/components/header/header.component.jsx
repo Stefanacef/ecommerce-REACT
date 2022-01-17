@@ -1,40 +1,38 @@
-import "./header.styles.scss";
 import logoImg from "../../assets/logo.png";
 import { auth } from "../../firebase/firebase.utils";
-import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import CartIcon from "../cart-icon/cart-icon.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 import { selectCartHidden } from "../../redux/cart/cart.selectors";
 import { selectCurrentUser } from "../../redux/user/user.selector";
+import {
+  HeaderContainer,
+  LogoContainer,
+  OptionContainer,
+  OptionLink,
+} from "./header.styles";
 const Header = () => {
   const currentUser = useSelector(selectCurrentUser);
   const hidden = useSelector(selectCartHidden);
   return (
-    <nav className="header">
-      <Link className="logo-container" to="/">
-        <img src={logoImg} alt="logo" className="logo" />
-      </Link>
-      <div className="options">
-        <Link to="/shop" className="option">
-          SHOP
-        </Link>
-        <Link to="/shop" className="option">
-          CONTACT
-        </Link>
+    <HeaderContainer>
+      <LogoContainer to="/">
+        <img src={logoImg} alt="logo" />
+      </LogoContainer>
+      <OptionContainer>
+        <OptionLink to="/shop">SHOP</OptionLink>
+        <OptionLink to="/shop">CONTACT</OptionLink>
         {currentUser ? (
-          <div className="option" onClick={() => auth.signOut()}>
+          <OptionLink as="div" onClick={() => auth.signOut()}>
             SIGN OUT
-          </div>
+          </OptionLink>
         ) : (
-          <Link className="option" to="/signin">
-            SIGN IN
-          </Link>
+          <OptionLink to="/signin">SIGN IN</OptionLink>
         )}
         <CartIcon />
-      </div>
+      </OptionContainer>
       {hidden ? null : <CartDropdown />}
-    </nav>
+    </HeaderContainer>
   );
 };
 export default Header;
